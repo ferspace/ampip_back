@@ -12,11 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_08_13_035356) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "cities", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "state_id", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
-    t.bigint "property_informations_id", null: false
+    t.integer "property_informations_id", null: false
     t.string "name"
     t.integer "phone_number"
     t.string "website"
@@ -32,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.string "social_media_inst"
     t.string "social_media_link"
     t.string "social_media_web"
-    t.bigint "corporate_id", null: false
+    t.integer "corporate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["corporate_id"], name: "index_corporate_informations_on_corporate_id"
@@ -67,6 +69,14 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "municipalities", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "municipality_key", null: false
+    t.string "zip_code", null: false
+    t.integer "state_id"
+    t.index ["state_id"], name: "index_municipalities_on_state_id"
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -76,7 +86,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.bigint "corporate_id", null: false
+    t.integer "corporate_id", null: false
     t.integer "tipo"
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
@@ -85,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
   end
 
   create_table "property_informations", force: :cascade do |t|
-    t.bigint "property_id", null: false
+    t.integer "property_id", null: false
     t.string "name"
     t.string "tipo"
     t.integer "superficie"
@@ -116,28 +126,33 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
   end
 
   create_table "property_users", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.integer "type_property"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "property_id", null: false
+    t.integer "property_id", null: false
     t.index ["property_id"], name: "index_property_users_on_property_id"
     t.index ["user_id"], name: "index_property_users_on_user_id"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "cities_count", null: false
   end
 
   create_table "status_disponibilities", force: :cascade do |t|
     t.boolean "status_property"
     t.decimal "average_price"
     t.integer "use"
-    t.bigint "property_informations_id"
+    t.integer "property_informations_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_informations_id"], name: "index_status_disponibilities_on_property_informations_id"
   end
 
   create_table "tenant_histories", force: :cascade do |t|
-    t.bigint "property_id", null: false
-    t.bigint "tenant_user_id", null: false
+    t.integer "property_id", null: false
+    t.integer "tenant_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_tenant_histories_on_property_id"
@@ -162,14 +177,14 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.text "next_value"
     t.text "message"
     t.string "email"
-    t.bigint "user_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_changes_on_user_id"
   end
 
   create_table "user_informations", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "full_name"
     t.string "last_name"
     t.string "address"
@@ -186,16 +201,16 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "corporate_id", null: false
-    t.bigint "user_rols_id", null: false
+    t.integer "corporate_id", null: false
+    t.integer "user_rols_id", null: false
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
     t.index ["user_rols_id"], name: "index_user_informations_on_user_rols_id"
   end
 
   create_table "user_rol_permissions", force: :cascade do |t|
-    t.bigint "permission_id", null: false
-    t.bigint "user_rol_id", null: false
+    t.integer "permission_id", null: false
+    t.integer "user_rol_id", null: false
     t.boolean "read"
     t.boolean "write"
     t.datetime "created_at", precision: 6, null: false
@@ -225,6 +240,26 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "zip_codes", force: :cascade do |t|
+    t.string "d_codigo", null: false
+    t.string "d_asenta", null: false
+    t.string "d_tipo_asenta", null: false
+    t.string "d_mnpio", null: false
+    t.string "d_estado", null: false
+    t.string "d_ciudad"
+    t.string "d_cp", null: false
+    t.string "c_estado", null: false
+    t.string "c_oficina", null: false
+    t.string "c_cp"
+    t.string "c_tipo_asenta", null: false
+    t.string "c_mnpio", null: false
+    t.string "id_asenta_cpcons", null: false
+    t.string "d_zona", null: false
+    t.string "c_cve_ciudad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "contacts", "property_informations", column: "property_informations_id"
