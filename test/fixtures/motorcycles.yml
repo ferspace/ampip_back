@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state: one
+  brand: one
+  status: one
+  yaer: 1
+  serial: MyString
+  plates: MyString
+  mileage: MyString
+  invoice_number: MyString
+  model: MyString
+  description: MyString
+  color: MyString
+  image: MyString
+  serial_image: MyString
+  engine: MyString
+  cilinder: MyString
+  submarca: MyString
+  insurance: MyString
+  policy: MyString
+  is_a_driver: false
+  driver_name: MyString
+  report_number: MyString
+  user: one
+
+two:
+  state: two
+  brand: two
+  status: two
+  yaer: 1
+  serial: MyString
+  plates: MyString
+  mileage: MyString
+  invoice_number: MyString
+  model: MyString
+  description: MyString
+  color: MyString
+  image: MyString
+  serial_image: MyString
+  engine: MyString
+  cilinder: MyString
+  submarca: MyString
+  insurance: MyString
+  policy: MyString
+  is_a_driver: false
+  driver_name: MyString
+  report_number: MyString
+  user: two

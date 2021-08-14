@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  property: MyString
+  name_bussines: MyString
+  country: MyString
+  product_badge: MyString
+  ID_SCIAN: 1
+  ID_DENUE: 1
+  antiquity: 1
+  superficie: 1
+
+two:
+  property: MyString
+  name_bussines: MyString
+  country: MyString
+  product_badge: MyString
+  ID_SCIAN: 1
+  ID_DENUE: 1
+  antiquity: 1
+  superficie: 1

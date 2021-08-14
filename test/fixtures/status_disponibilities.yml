@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  PropertyInformation: one
+  status_property: false
+  average_price: 9.99
+  use: 1
+
+two:
+  PropertyInformation: two
+  status_property: false
+  average_price: 9.99
+  use: 1

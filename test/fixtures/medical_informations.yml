@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nss: MyString
+  blod_type: MyString
+  allergies: MyString
+  donor: MyString
+  user_information: one
+
+two:
+  nss: MyString
+  blod_type: MyString
+  allergies: MyString
+  donor: MyString
+  user_information: two

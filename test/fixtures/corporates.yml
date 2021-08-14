@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  english_name: MyString
+  social_type: MyString
+  address: MyString
+  postal_code: MyString
+  colony: MyString
+  state: MyString
+  municipality: MyString
+  cel: 1
+  anual_invetsment: 9.99
+  previus_anual_inv: 9.99
+  next_anual_inv: 9.99
+  downt_date: 2021-07-19 18:14:54
+  corporate_type: 1
+  status: false
+
+two:
+  name: MyString
+  english_name: MyString
+  social_type: MyString
+  address: MyString
+  postal_code: MyString
+  colony: MyString
+  state: MyString
+  municipality: MyString
+  cel: 1
+  anual_invetsment: 9.99
+  previus_anual_inv: 9.99
+  next_anual_inv: 9.99
+  downt_date: 2021-07-19 18:14:54
+  corporate_type: 1
+  status: false

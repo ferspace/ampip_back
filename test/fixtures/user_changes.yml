@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  previews_value: MyText
+  next_value: MyText
+  message: MyText
+  email: MyString
+  users: one
+
+two:
+  previews_value: MyText
+  next_value: MyText
+  message: MyText
+  email: MyString
+  users: two
