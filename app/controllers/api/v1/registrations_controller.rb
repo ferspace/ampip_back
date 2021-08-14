@@ -1,7 +1,5 @@
 class Api::V1::RegistrationsController < ApplicationController
     skip_before_action: authenticate_user_from_token!
-    before_action :ensure_params_exist, only: :create
-    
 
     def create
       user = User.new user_params
