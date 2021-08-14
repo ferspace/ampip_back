@@ -75,7 +75,7 @@ def seed_table_municipalities
 end
 
 def seed_table_cities
-  puts 'Creating cities....'
+  puts 'Creating cities...'
 
   states = State.all
   states.each do |state|
