@@ -26,5 +26,7 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :status,
                 :unity,
                 :created_at,
-                :updated_at
+                :updated_at,
+                :lat, 
+                :lng
 end

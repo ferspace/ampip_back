@@ -18,5 +18,7 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :user_rols_id,
               :user_type,
               :created_at,
-              :updated_at
+              :updated_at,
+              :phone_office_lada,
+              :phone_office_code
 end
