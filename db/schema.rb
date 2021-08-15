@@ -12,11 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_08_13_035356) do
 
-  create_table "cities", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "state_id", null: false
-  end
-
   create_table "contacts", force: :cascade do |t|
     t.integer "property_informations_id", null: false
     t.string "name"
@@ -67,14 +62,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.text "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "municipalities", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "municipality_key", null: false
-    t.string "zip_code", null: false
-    t.integer "state_id"
-    t.index ["state_id"], name: "index_municipalities_on_state_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -133,11 +120,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.integer "property_id", null: false
     t.index ["property_id"], name: "index_property_users_on_property_id"
     t.index ["user_id"], name: "index_property_users_on_user_id"
-  end
-
-  create_table "states", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "cities_count", null: false
   end
 
   create_table "status_disponibilities", force: :cascade do |t|
@@ -240,26 +222,6 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "zip_codes", force: :cascade do |t|
-    t.string "d_codigo", null: false
-    t.string "d_asenta", null: false
-    t.string "d_tipo_asenta", null: false
-    t.string "d_mnpio", null: false
-    t.string "d_estado", null: false
-    t.string "d_ciudad"
-    t.string "d_cp", null: false
-    t.string "c_estado", null: false
-    t.string "c_oficina", null: false
-    t.string "c_cp"
-    t.string "c_tipo_asenta", null: false
-    t.string "c_mnpio", null: false
-    t.string "id_asenta_cpcons", null: false
-    t.string "d_zona", null: false
-    t.string "c_cve_ciudad"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "contacts", "property_informations", column: "property_informations_id"

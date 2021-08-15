@@ -29,9 +29,9 @@ module Dashboard
             elsif type == "admin_society"
                 return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
             elsif type == "user_society"
-                debugger
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
             elsif type == "admin_propiety"
-                debugger
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
             end
         end
 
