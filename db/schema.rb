@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_035356) do
+ActiveRecord::Schema.define(version: 2021_08_15_184850) do
 
   create_table "contacts", force: :cascade do |t|
     t.integer "property_informations_id", null: false
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.boolean "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cel_lada"
+    t.integer "cel_code"
   end
 
   create_table "maps", force: :cascade do |t|
@@ -109,6 +111,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.string "unity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lat"
+    t.string "lng"
     t.index ["property_id"], name: "index_property_informations_on_property_id"
   end
 
@@ -185,6 +189,8 @@ ActiveRecord::Schema.define(version: 2021_08_13_035356) do
     t.datetime "updated_at", null: false
     t.integer "corporate_id", null: false
     t.integer "user_rols_id", null: false
+    t.integer "phone_office_lada"
+    t.integer "phone_office_code"
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
     t.index ["user_rols_id"], name: "index_user_informations_on_user_rols_id"
