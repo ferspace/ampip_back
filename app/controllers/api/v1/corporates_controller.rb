@@ -43,6 +43,6 @@ class Api::V1::CorporatesController < ApplicationController
         end
 
         def permit_params
-            params.require(:corporate).permit(:id,:name,:english_name,:social_type,:address,:postal_code,:colony,:state,:municipality,:cel,:anual_invetsment,:previus_anual_inv,:next_anual_inv,:downt_date,:corporate_type,:status)
+            params.require(:corporate).permit(:id,:name,:english_name,:social_type,:address,:postal_code,:colony,:state,:municipality,:cel,:anual_invetsment,:previus_anual_inv,:next_anual_inv,:downt_date,:corporate_type,:status, )
         end
 end

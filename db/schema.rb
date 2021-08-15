@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2021_08_15_184850) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacts", force: :cascade do |t|
-    t.integer "property_informations_id", null: false
+    t.bigint "property_informations_id", null: false
     t.string "name"
     t.integer "phone_number"
     t.string "website"
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
     t.string "social_media_inst"
     t.string "social_media_link"
     t.string "social_media_web"
-    t.integer "corporate_id", null: false
+    t.bigint "corporate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["corporate_id"], name: "index_corporate_informations_on_corporate_id"
@@ -75,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.integer "corporate_id", null: false
+    t.bigint "corporate_id", null: false
     t.integer "tipo"
     t.string "nombre"
     t.datetime "created_at", precision: 6, null: false
@@ -84,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
   end
 
   create_table "property_informations", force: :cascade do |t|
-    t.integer "property_id", null: false
+    t.bigint "property_id", null: false
     t.string "name"
     t.string "tipo"
     t.integer "superficie"
@@ -117,11 +120,11 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
   end
 
   create_table "property_users", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "type_property"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "property_id", null: false
+    t.bigint "property_id", null: false
     t.index ["property_id"], name: "index_property_users_on_property_id"
     t.index ["user_id"], name: "index_property_users_on_user_id"
   end
@@ -130,15 +133,15 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
     t.boolean "status_property"
     t.decimal "average_price"
     t.integer "use"
-    t.integer "property_informations_id"
+    t.bigint "property_informations_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_informations_id"], name: "index_status_disponibilities_on_property_informations_id"
   end
 
   create_table "tenant_histories", force: :cascade do |t|
-    t.integer "property_id", null: false
-    t.integer "tenant_user_id", null: false
+    t.bigint "property_id", null: false
+    t.bigint "tenant_user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["property_id"], name: "index_tenant_histories_on_property_id"
@@ -163,14 +166,14 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
     t.text "next_value"
     t.text "message"
     t.string "email"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_user_changes_on_user_id"
   end
 
   create_table "user_informations", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.string "full_name"
     t.string "last_name"
     t.string "address"
@@ -187,8 +190,8 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "corporate_id", null: false
-    t.integer "user_rols_id", null: false
+    t.bigint "corporate_id", null: false
+    t.bigint "user_rols_id", null: false
     t.integer "phone_office_lada"
     t.integer "phone_office_code"
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
@@ -197,8 +200,8 @@ ActiveRecord::Schema.define(version: 2021_08_15_184850) do
   end
 
   create_table "user_rol_permissions", force: :cascade do |t|
-    t.integer "permission_id", null: false
-    t.integer "user_rol_id", null: false
+    t.bigint "permission_id", null: false
+    t.bigint "user_rol_id", null: false
     t.boolean "read"
     t.boolean "write"
     t.datetime "created_at", precision: 6, null: false
