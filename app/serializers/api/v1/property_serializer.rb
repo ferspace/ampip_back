@@ -4,6 +4,6 @@ class Api::V1::PropertySerializer < Api::V1::ApplicationSerializer
                 :tipo,
                 :created_at,
                 :updated_at,
-                :nombre
-                 
+                :nombre    
+                
 end

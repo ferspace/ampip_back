@@ -23,7 +23,7 @@ module Dashboard
         private 
         def dashboard(type,user_information, user_permissions)
             if type == "admin_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions, "allUser":all_user, "allChanges":all_changes, "allProperties":allProperties}
             elsif type == "user_ampip"
                 return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions}
             elsif type == "admin_society"
@@ -55,6 +55,23 @@ module Dashboard
             else
                 return [0]
             end
-        end      
+        end     
+        
+        def all_user
+            return UserInformation.all
+        end
+
+        def all_changes
+            return PropertyInformations.where(status:1)
+        end
+
+        def allProperties
+            return {
+                "parques": Property.where(tipo:0),
+                "naves": Property.where(tipo:1),
+                "terrenos": Property.where(tipo:2)
+
+            }
+        end
     end 
 end
