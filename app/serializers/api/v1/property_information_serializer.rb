@@ -29,4 +29,6 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :updated_at,
                 :lat, 
                 :lng
+
+    has_many :property
 end

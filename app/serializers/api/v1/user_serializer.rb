@@ -1,5 +1,5 @@
 class Api::V1::UserSerializer < Api::V1::ApplicationSerializer
-    attributes  :id
-    
- 
+    attributes  :id,
+                :email,
+                :user_type
 end

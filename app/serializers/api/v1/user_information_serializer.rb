@@ -21,4 +21,5 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :updated_at,
               :phone_office_lada,
               :phone_office_code
+  has_one :user
 end

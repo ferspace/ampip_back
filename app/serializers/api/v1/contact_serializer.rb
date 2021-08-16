@@ -7,4 +7,6 @@ class Api::V1::ContactSerializer < Api::V1::ApplicationSerializer
                 :updated_at,
                 :property_information
                 
+    has_many :property_information
+                
 end
