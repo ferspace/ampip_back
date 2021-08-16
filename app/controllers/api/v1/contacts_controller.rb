@@ -15,7 +15,7 @@ class Api::V1::ContactsController < ApplicationController
         if newContact.save 
             render json:{"message":"guardado"}
         else
-            render json:{"message":"error"}
+            render json:{"message":newContact.errors.full_messages}
         end
     end
 

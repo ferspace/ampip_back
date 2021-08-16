@@ -10,6 +10,10 @@ module Permissions
             return rescue_user_role_permission(search_roll)
         end
 
+        def rescues
+            return rescue_user_role_permission(search_roll)
+        end
+
         private
 
         def search_roll
@@ -31,6 +35,17 @@ module Permissions
             end 
             return permission
         end
+
+
+        #obtiene la informacion del usuario
+        def rescue_user_information(id)
+            @user = UserInformation.where(user_id:id)
+            if @user != []
+                return @user
+            else
+                return [0]
+            end
+        end    
 
     end
 end
