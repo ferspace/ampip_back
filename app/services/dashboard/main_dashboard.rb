@@ -23,15 +23,15 @@ module Dashboard
         private 
         def dashboard(type,user_information, user_permissions)
             if type == "admin_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions, "allUser":all_user, "allChanges":all_changes, "allProperties":allProperties}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions, "allUser":all_user, "allChanges":all_changes, "allProperties":allProperties, "rescueParks":rescue_parks}
             elsif type == "user_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions}
+                return {"widgets":["developers":rescue_corporate(0, 1), "sponsors":rescue_corporate(0, 0)], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
             elsif type == "admin_society"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
             elsif type == "user_society"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
             elsif type == "admin_propiety"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
             end
         end
 
@@ -73,5 +73,15 @@ module Dashboard
 
             }
         end
+
+        def rescue_parks
+            @user = UserInformation.where(user_id:@params[:id])[0]
+            if @user != []
+                PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
+            else
+                return [0]
+            end
+        end
+
     end 
 end
