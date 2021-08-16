@@ -34,7 +34,7 @@ module Dashboard
                 return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
             end
         end
-
+        #cambio
         #rescata los o el desarrollador dependiendo de el requerimiento donde type  (0 => patrocinadores o 1 => desarrolladores)
         def rescue_corporate(id, type = nil)
             if id == 0
