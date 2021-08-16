@@ -7,7 +7,11 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
 
     def show
         statusDisponibilities_info = StatusDisponibility.find(params[:id])
-        render json: statusDisponibilities_info, each_serializer: Api::V1::StatusDisponibilitySerializer
+        if statusDisponibilities_info  != nil
+            render json: statusDisponibilities_info, each_serializer: Api::V1::StatusDisponibilitySerializer
+        else
+            render json:{"message":"no existe", "status":404}
+        end 
     end
 
     def create
