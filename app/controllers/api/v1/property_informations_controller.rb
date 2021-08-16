@@ -7,8 +7,12 @@ class Api::V1::PropertyInformationsController < ApplicationController
     end
 
     def show
-        propertyInformation_info = PropertyInformations.find_property_id(params[:id])
-        render json: propertyInformation_info, each_serializer: Api::V1::PropertyInformationSerializer
+        propertyInformation_info = PropertyInformations.find_by_id(params[:id])
+        if propertyInformation_info != nil
+            render json: propertyInformation_info, each_serializer: Api::V1::PropertyInformationSerializer
+        else
+            render json: { message: 'Not found' }, status: 404
+        end
     end
 
     def create
