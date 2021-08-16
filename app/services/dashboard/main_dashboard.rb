@@ -79,7 +79,11 @@ module Dashboard
         def rescue_parks
             @user = UserInformation.where(user_id:@params[:id])[0]
             if @user != []
-                PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
+                if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
+                    return PropertyInformations.all
+                else
+                    PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
+                end
             else
                 return [0]
             end
