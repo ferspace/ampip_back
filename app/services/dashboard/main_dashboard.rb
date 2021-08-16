@@ -62,7 +62,7 @@ module Dashboard
         end
 
         def all_changes
-            return PropertyInformations.where(status:1)
+            return PropertyInformations.where(status:0)
         end
 
         def allProperties
