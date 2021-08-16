@@ -20,7 +20,6 @@ gem 'devise'
 gem "pundit"
 gem "simple_token_authentication"
 gem 'pry', '~> 0.14.1'
-gem 'csv', '~> 3.1', '>= 3.1.5'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
