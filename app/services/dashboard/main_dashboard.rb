@@ -25,15 +25,15 @@ module Dashboard
             if type == "admin_ampip"
                 return {"widgets":["developers":rescue_corporate(0, 0), "sponsors":rescue_corporate(0, 1)], "user_information":user_information, "permissions":user_permissions, "allUser":all_user, "allChanges":all_changes, "allProperties":allProperties, "rescueParks":rescue_parks}
             elsif type == "user_ampip"
-                return {"widgets":["developers":rescue_corporate(0, 0), "sponsors":rescue_corporate(0, 1)], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
+                return {"widgets":["developers":rescue_corporate(0, 0), "sponsors":rescue_corporate(0, 1)], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks, "allProperties":allProperties,"allUser":all_user}
             elsif type == "admin_society"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks, "allProperties":allProperties,"allUser":all_user}
             elsif type == "user_society"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks, "allProperties":allProperties,"allUser":all_user}
             elsif type == "admin_propiety"
-                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
+                return {"widgets":["developers":rescue_corporate(user_information),"sponsors":false], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks, "allProperties":allProperties,"allUser":all_user}
             else 
-                return {"widgets":["developers":false,"sponsors":rescue_corporate(user_information)], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks}
+                return {"widgets":["developers":false,"sponsors":rescue_corporate(user_information)], "user_information":user_information, "permissions":user_permissions, "rescueParks":rescue_parks, "allProperties":allProperties,"allUser":all_user}
             end
         end
         #cambio
@@ -71,16 +71,20 @@ module Dashboard
             if @user = UserInformation.where(user_id:@params[:id])[0]
                 if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
                     return {
-                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}),
-                        "naves": PropertyInformations.joins(:property).where(property:{tipo:1}),
-                        "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2})
+                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{status:1}),
+                        "naves": PropertyInformations.joins(:property).where(property:{tipo:1}, property_informations:{status:1}),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2}, property_informations:{status:1}),
+                        "nav": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:1, status:1}),
+                        "ter": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:2, status:1})
                     }
                 end
             else
                 return {
-                        "parques": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id],  tipo:0}),
-                        "naves": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:1}),
-                        "terrenos": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:2})
+                        "parques": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id],  tipo:0}, property_informations:{status:1}),
+                        "naves": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:1}, property_informations:{status:1}),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:2}, property_informations:{status:1}),
+                        "nav": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:1, status:1}),
+                        "ter": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:2, status:1})
                     }
             end
         end

@@ -2,7 +2,7 @@ class Api::V1::TenantUsersController < ApplicationController
 
     def index 
         tenantUsers = TenantUser.all
-        render json: tenantUsers, each_serializer: Api::V1::TenantUserSerializer
+        render json: tenantUsers
     end
 
     def show
@@ -11,7 +11,7 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     def create
-        newTenantUser = TenantUser.new
+        newTenantUser = TenantUser.new permit_params
         if newTenantUser.save
             render json:{"message":TenantUser.last[:id]}
         else
