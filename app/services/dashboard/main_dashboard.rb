@@ -68,12 +68,21 @@ module Dashboard
         end
 
         def allProperties
-            return {
-                "parques": Property.where(tipo:0),
-                "naves": Property.where(tipo:1),
-                "terrenos": Property.where(tipo:2)
-
-            }
+            if @user = UserInformation.where(user_id:@params[:id])[0]
+                if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
+                    return {
+                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}),
+                        "naves": PropertyInformations.joins(:property).where(property:{tipo:1}),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2})
+                    }
+                end
+            else
+                return {
+                        "parques": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id],  tipo:0}),
+                        "naves": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:1}),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:2})
+                    }
+            end
         end
 
         def rescue_parks
