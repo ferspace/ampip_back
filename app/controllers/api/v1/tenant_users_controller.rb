@@ -1,8 +1,12 @@
 class Api::V1::TenantUsersController < ApplicationController
 
     def index 
-        tenantUsers = TenantUser.all
-        render json: tenantUsers
+        properties = {}
+        propertiesInfo = Property.where(corporate_id: params[:id])
+        propertiesInfo.each do |i|
+            properties.push(TenantUser.where(property: i[:id]))
+        end
+        render json: properties
     end
 
     def show
