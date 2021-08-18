@@ -1,5 +1,5 @@
 class Api::V1::PropertyInformationsController < ApplicationController
-    before_action :session_user
+    #before_action :session_user
 
     def index
         propertyInformations = PropertyInformations.all
