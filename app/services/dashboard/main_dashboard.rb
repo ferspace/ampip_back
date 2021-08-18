@@ -93,9 +93,9 @@ module Dashboard
             @user = UserInformation.where(user_id:@params[:id])[0]
             if @user != []
                 if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
-                    return PropertyInformations.all
+                    return PropertyInformations.joins(:property).where(property:{tipo:0})
                 else
-                    PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
+                    return PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
                 end
             else
                 return [0]
