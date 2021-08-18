@@ -71,7 +71,7 @@ module Dashboard
             if @user = UserInformation.where(user_id:@params[:id])[0]
                 if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
                     return {
-                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{status:1}),
+                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{status:1, tipo:0}),
                         "naves": PropertyInformations.joins(:property).where(property:{tipo:1}, property_informations:{status:1}),
                         "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2}, property_informations:{status:1}),
                         "nav": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:1, status:1}),
@@ -93,9 +93,9 @@ module Dashboard
             @user = UserInformation.where(user_id:@params[:id])[0]
             if @user != []
                 if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
-                    return PropertyInformations.joins(:property).where(property:{tipo:0})
+                    return PropertyInformations.joins(:property).where(property:{tipo:0},  property_informations:{status:1, tipo:0})
                 else
-                    return PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0})
+                    return PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0},  property_informations:{status:1, tipo:0})
                 end
             else
                 return [0]
