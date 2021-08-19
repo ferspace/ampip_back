@@ -3,7 +3,6 @@ class Api::V1::PropietiesController < ApplicationController
 
     def index 
         propieties = Corporativo::CrearPertenencia.new(@current_user, params).Property
-        
         render json: propieties, each_serializer: Api::V1::PropertySerializer
     end 
 

@@ -1,8 +1,8 @@
 class Api::V1::TenantUsersController < ApplicationController
 
     def index 
-        tenant = TenantUser.where(property: params[:id])
-        render json: tenant, each_serializer: Api::V1::TenantUserSerializer
+        tenant = TenantUser.where(property_id: params[:id])
+        render json: tenant
     end
 
     def show
@@ -35,7 +35,16 @@ class Api::V1::TenantUsersController < ApplicationController
     private 
 
     def permit_params
-        params.require(:tenant_user).permit(:property, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie)
+        params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie)
     end
 
+    def rescue_tenant_user 
+        tenant = []
+
+        for i in 1..TenantUser.count
+            tenant << TenantUser.find(i)
+        end
+
+        return tenant
+    end
 end 

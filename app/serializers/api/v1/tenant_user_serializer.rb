@@ -1,6 +1,5 @@
 class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
     attributes :name_bussines,
-               :property,
                :name_bussines,
                :country, 
                :product_badge,
@@ -10,4 +9,5 @@ class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
                :superficie,
                :created_at,
                :updated_at
+    
 end

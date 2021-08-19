@@ -3,4 +3,5 @@ class Property < ApplicationRecord
   has_many :property_informations , dependent: :destroy
   has_many :tenant_histories , dependent: :destroy
   has_many :property_users , dependent: :destroy
+  has_many :tenant_users
 end
