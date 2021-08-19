@@ -7,12 +7,14 @@ class Api::V1::UserInformationsController < ApplicationController
     end
 
     def show
-        userInformation_info = UserInformation.find(params[:id])
+        userInformation_info = UserInformation.where(user_id: params[:id])
+        
         render json: userInformation_info, each_serializer: Api::V1::UserInformationSerializer
     end
 
     def create
-        newInformationUser = UserInformation.new permit_params
+        newInformationUser = UserInformation.new(permit_params)
+    
         if newInformationUser.save
             render json:{"data":newInformationUser}
         else
