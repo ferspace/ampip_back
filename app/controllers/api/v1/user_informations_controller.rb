@@ -15,7 +15,6 @@ class Api::V1::UserInformationsController < ApplicationController
     def create
         newInformationUser = UserInformation.new(permit_params)
         if newInformationUser.save
-            debugger
             render json:{"data":newInformationUser}
         else
             debugger
