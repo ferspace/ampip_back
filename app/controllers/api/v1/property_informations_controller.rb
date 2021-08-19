@@ -26,7 +26,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
 
     def update
         updatePropertyInformation = PropertyInformations.find(params[:id])
-        if updatePropertyInformation.update(permit_params)
+        if updatePropertyInformation.update(permit_params_update)
             render json:{"message":"guardado"}
         else
             render json:{"message":updatePropertyInformation.errors.full_messages}
@@ -46,6 +46,10 @@ class Api::V1::PropertyInformationsController < ApplicationController
 
         def permit_params
             params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng)
+        end
+
+        def permit_params_update
+            params[:data].require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng)
         end
 
 end
