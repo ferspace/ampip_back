@@ -26,6 +26,7 @@ class CreatePropertyInformations < ActiveRecord::Migration[6.1]
       t.string :state
       t.integer :status
       t.string :unity
+      t.string :image
       t.timestamps
     end
   end

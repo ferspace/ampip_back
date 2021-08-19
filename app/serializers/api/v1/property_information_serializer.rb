@@ -31,4 +31,5 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :lng
 
     has_many :property
+    has_many :status_disponibilities
 end

@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_031913) do
     t.string "social_media_inst"
     t.string "social_media_link"
     t.string "social_media_web"
+    t.string "image"
     t.bigint "corporate_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_031913) do
     t.string "state"
     t.integer "status"
     t.string "unity"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "lat"

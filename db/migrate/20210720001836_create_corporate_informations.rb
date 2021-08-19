@@ -7,6 +7,7 @@ class CreateCorporateInformations < ActiveRecord::Migration[6.1]
       t.string :social_media_inst
       t.string :social_media_link
       t.string :social_media_web
+      t.string :image
       t.references :corporate, null: false, foreign_key: true
 
       t.timestamps
