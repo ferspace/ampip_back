@@ -1,4 +1,4 @@
-class Api::V1::UpdateController < ApplicationController
+class Api::V1::UpdatePropertiesController < ApplicationController
 
     def index
         render json: {message: 'Not found'}, status: 404
