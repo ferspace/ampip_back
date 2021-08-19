@@ -14,16 +14,17 @@ class Api::V1::UserInformationsController < ApplicationController
 
     def create
         newInformationUser = UserInformation.new(permit_params)
-    
         if newInformationUser.save
+            debugger
             render json:{"data":newInformationUser}
         else
+            debugger
             render json:{"message":newInformationUser.errors.full_messages}
         end
     end
 
     def update
-        updateInformationUser = UserInformation.find(params[:id])
+        updateInformationUser = UserInformation.where(user_id:params[:id])
         if updateInformationUser.update(permit_params)
             render json:{"data":updateInformationUser}
         else
