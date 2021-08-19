@@ -14,7 +14,7 @@ module Corporativo
             
             userInformation = UserInformation.find_by_user_id(@user[:id])
             if @user[:user_type] == "admin_ampip" || @user[:user_type] == "user_ampip"
-                return  propertyes = Property.where(tipo: @params[:type])
+                return  propertyes = Property.all
             else
                 if userInformation[:corporate_id]
                     return propertyes = Property.where(corporate_id: userInformation[:corporate_id])
