@@ -8,6 +8,7 @@ class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
                :antiquity,
                :superficie,
                :created_at,
-               :updated_at
+               :updated_at,
+               :id_propiedad
     
 end

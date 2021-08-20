@@ -20,7 +20,7 @@ class CreatePropertyInformations < ActiveRecord::Migration[6.1]
       t.text :infrastructure
       t.integer :navy_number
       t.text :message
-      t.integer :postal_code
+      t.string :postal_code
       t.string :colony
       t.string :municipality
       t.string :state

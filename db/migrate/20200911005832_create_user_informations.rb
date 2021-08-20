@@ -14,7 +14,7 @@ class CreateUserInformations < ActiveRecord::Migration[5.2]
       t.boolean :status
       t.string :municipality
       t.string :colony
-      t.integer :postal_code_number
+      t.string :postal_code_number
       t.integer :user_type
       t.timestamps
     end

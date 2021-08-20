@@ -1,7 +1,6 @@
 class CreateTenantUsers < ActiveRecord::Migration[6.1]
   def change
     create_table :tenant_users do |t|
-      
       t.string :name_bussines
       t.string :country
       t.string :product_badge
@@ -9,6 +8,7 @@ class CreateTenantUsers < ActiveRecord::Migration[6.1]
       t.integer :ID_DENUE
       t.integer :antiquity
       t.integer :superficie
+      t.integer :id_propiedad
       t.timestamps
     end
   end
