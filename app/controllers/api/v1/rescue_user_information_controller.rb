@@ -1,8 +1,8 @@
 class Api::V1::RescueUserInformationController < ApplicationController
 
-    def index
-        dataUser = UserInformations::CreateUserInfo.new(rescue_params).call
-        render json:{"response":dataUser}
+    def show
+        dataUser = UserInformation.joins(:user).where(users: {id: params[:id]})
+        render json: dataUser
     end
 
 end
