@@ -11,11 +11,16 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     def create
-        newTenantUser = TenantUser.new permit_params
-        if newTenantUser.save
-            render json:{"message":TenantUser.last[:id]}
+        getProps = Property.where(id: 1)
+        if getProps != nil 
+            newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps[:id]))
+            if newTenantUser.save
+                render json:{"message":TenantUser.last[:id]}
+            else
+                render json:{"message":newTenantUser.errors.full_messages}
+            end
         else
-            render json:{"message":newTenantUser.errors.full_messages}
+            render json:{"message":"Property not found"}
         end
     end
 
@@ -33,6 +38,10 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     private 
+
+    def params_search_property
+        params.require(:tenant_user).permit(:property_id)
+    end
 
     def permit_params
         params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie)
