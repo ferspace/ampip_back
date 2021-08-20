@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :user_rol
       resources :user_rol_permission
       resources :update
+      resources :rescue_user_information
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         post "sign_in", to: "sessions#create"

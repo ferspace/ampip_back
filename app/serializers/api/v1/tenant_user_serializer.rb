@@ -1,5 +1,6 @@
 class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
-    attributes :name_bussines,
+    attributes :id, 
+               :name_bussines,
                :name_bussines,
                :country, 
                :product_badge,
