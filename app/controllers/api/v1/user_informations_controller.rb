@@ -17,7 +17,7 @@ class Api::V1::UserInformationsController < ApplicationController
         if newInformationUser.save
             render json:{"data":newInformationUser}
         else
-            debugger
+            
             render json:{"message":newInformationUser.errors.full_messages}
         end
     end
