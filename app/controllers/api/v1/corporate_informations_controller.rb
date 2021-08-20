@@ -7,7 +7,7 @@ class Api::V1::CorporateInformationsController < ApplicationController
     end
 
     def show
-        corporateInformations_info = CorporateInformation.find(params[:id])
+        corporateInformations_info = CorporateInformation.where(corporate_id: params[:id])
         render json: corporateInformations_info, each_serializer: Api::V1::CorporatesInformationSerializer
     end
 
