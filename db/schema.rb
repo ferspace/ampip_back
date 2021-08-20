@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_031913) do
+ActiveRecord::Schema.define(version: 2021_08_20_184337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,9 @@ ActiveRecord::Schema.define(version: 2021_08_19_031913) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "lat"
     t.string "lng"
+    t.string "phone"
+    t.string "lada"
+    t.string "code"
     t.index ["property_id"], name: "index_property_informations_on_property_id"
   end
 
