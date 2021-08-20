@@ -28,6 +28,8 @@ class Api::V1::TenantUsersController < ApplicationController
                 else
                     render json:{"message":newTenantUser.errors.full_messages}
                 end
+            else
+                render json:{"message":"No existe la propiedad"}
             end
         end
     end
