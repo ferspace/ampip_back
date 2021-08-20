@@ -22,5 +22,4 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :phone_office_lada,
               :phone_office_code
   has_one :user
-  has_one :corporate_id
 end
