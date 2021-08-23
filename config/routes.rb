@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :user_rol_permission
       resources :update
       resources :rescue_user_information
+      resources :update_user
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         put "update_user", to: "registrations#update"
