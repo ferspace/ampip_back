@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       resources :rescue_user_information
       devise_scope :user do
         post "sign_up", to: "registrations#create"
-        put "sign_up", to: "registrations#update"
+        put "update_user", to: "registrations#update"
         post "sign_in", to: "sessions#create"
         get "logout", to: "sessions#destroy"
       end
