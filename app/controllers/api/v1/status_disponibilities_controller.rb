@@ -1,12 +1,12 @@
 class Api::V1::StatusDisponibilitiesController < ApplicationController
 
     def index
-        statusDisponibilities = StatusDisponibility.all
+        statusDisponibilities = StatusDisponibility.where(status_property:true)
         render json: statusDisponibilities, each_serializer: Api::V1::StatusDisponibilitySerializer
     end
 
     def show
-        statusDisponibilities_info = StatusDisponibility.find(params[:id])
+        statusDisponibilities_info = StatusDisponibility.where(property_informations_id: params[:id])
         if statusDisponibilities_info  != nil
             render json: statusDisponibilities_info, each_serializer: Api::V1::StatusDisponibilitySerializer
         else

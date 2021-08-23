@@ -18,7 +18,9 @@ class Api::V1::PropertyInformationsController < ApplicationController
     def create
         newPropertyInformation = PropertyInformations.new permit_params
         if newPropertyInformation.save
-            render json:{"message":"guardado"}
+            idProperty = newPropertyInformation[:id]
+            newStatus = createStatus(idProperty)#creaa el status disponible por defecto en falso
+            render json:{"message": newStatus}
         else
             render json:{"message":newPropertyInformation.errors.full_messages}
         end
@@ -51,5 +53,16 @@ class Api::V1::PropertyInformationsController < ApplicationController
         def permit_params_update
             params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng)
         end
+
+        #crear registro en la tabla de disponibilidad
+        def createStatus(id)
+            newStatus = StatusDisponibility.new(status_property:false, property_informations_id: id, average_price: nil, use: "N/A")
+            if newStatus.save
+                return "Guardado"
+            else
+                return "error"
+            end
+        end
+
 
 end
