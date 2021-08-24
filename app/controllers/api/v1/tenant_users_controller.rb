@@ -11,8 +11,8 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     def create
-        getProps = Property.find(params_search_property[:property_id])
-        if getProps.present?    
+        getProps = Property.find(params[:tenant_user][:id_propiedad])
+        if getProps.present?
             newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps.id ))
             if newTenantUser.save
                 render json:{"message":newTenantUser}
@@ -20,7 +20,7 @@ class Api::V1::TenantUsersController < ApplicationController
                 render json:{"message":newTenantUser.errors.full_messages}
             end
         else
-            getProps = PropertyInformations.find(params_search_property[:property_id])
+            getProps = PropertyInformations.find(params[:tenant_user][:id_propiedad])
             if getProps.present?
                 newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps.property_id ))
                 if newTenantUser.save
@@ -50,7 +50,7 @@ class Api::V1::TenantUsersController < ApplicationController
     private 
 
     def params_search_property
-        params.require(:tenant_user).permit(:property_id)
+        params[:tenant_user].permit(:id_propiedad)
     end
 
     def permit_params
