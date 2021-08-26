@@ -19,6 +19,4 @@ class Api::V1::CorporatesSerializer < Api::V1::ApplicationSerializer
                 :updated_at,
                 :cel_lada,
                 :cel_code
-    
-    has_many :users
 end
