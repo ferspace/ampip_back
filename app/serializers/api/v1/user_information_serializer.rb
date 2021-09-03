@@ -20,7 +20,9 @@ class Api::V1::UserInformationSerializer < Api::V1::ApplicationSerializer
               :created_at,
               :updated_at,
               :phone_office_lada,
-              :phone_office_code
+              :phone_office_code,
+              :ext_num,
+              :int_num
   has_one :user
   has_one :corporate
 end

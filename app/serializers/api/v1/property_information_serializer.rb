@@ -28,7 +28,9 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :created_at,
                 :updated_at,
                 :lat, 
-                :lng
+                :lng,
+                :num_int,
+                :num_ext
 
     has_many :property
     has_many :status_disponibilities
