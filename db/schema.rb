@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_20_184337) do
+ActiveRecord::Schema.define(version: 2021_09_03_231141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_184337) do
     t.string "phone"
     t.string "lada"
     t.string "code"
+    t.string "num_int"
+    t.string "num_ext"
     t.index ["property_id"], name: "index_property_informations_on_property_id"
   end
 
@@ -201,6 +203,8 @@ ActiveRecord::Schema.define(version: 2021_08_20_184337) do
     t.bigint "user_rols_id", null: false
     t.integer "phone_office_lada"
     t.integer "phone_office_code"
+    t.string "ext_num"
+    t.string "int_num"
     t.index ["corporate_id"], name: "index_user_informations_on_corporate_id"
     t.index ["user_id"], name: "index_user_informations_on_user_id"
     t.index ["user_rols_id"], name: "index_user_informations_on_user_rols_id"
