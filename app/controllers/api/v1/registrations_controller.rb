@@ -46,7 +46,7 @@ class Api::V1::RegistrationsController < ApplicationController
     end
 
     def user_information
-      params.require(:user).permit(:full_name, corporate_id, user_rols_id)
+      params.require(:user).permit(:full_name, :corporate_id, :user_rols_id)
     end
     
     def user_params
