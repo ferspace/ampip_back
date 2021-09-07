@@ -18,5 +18,7 @@ class Api::V1::CorporatesSerializer < Api::V1::ApplicationSerializer
                 :created_at,
                 :updated_at,
                 :cel_lada,
-                :cel_code
+                :cel_code,
+                :ext_num,
+                :int_num
 end
