@@ -21,7 +21,7 @@ class Api::V1::CorporateInformationsController < ApplicationController
     end
 
     def update
-        updateCorporateInformation = CorporateInformation.find(params[:id])
+        updateCorporateInformation = CorporateInformation.where(corporate_id:params[:id])
         if updateCorporateInformation.update(permit_params)
             render json:{"message":"guardado"}
         else
