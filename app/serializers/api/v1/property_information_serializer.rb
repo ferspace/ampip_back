@@ -30,7 +30,10 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :lat, 
                 :lng,
                 :num_int,
-                :num_ext
+                :num_ext,
+                :phone,
+                :lada,
+                :code
 
     has_many :property
     has_many :status_disponibilities
