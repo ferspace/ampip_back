@@ -31,7 +31,7 @@ class Api::V1::UpdateUserController < ApplicationController
 
       
       def user_information
-        params.require(:user).permit(:full_name, :corporate_id, :user_rols_id)
+        params.require(:information).permit(:full_name, :corporate_id, :user_rols_id)
       end
 end
 
