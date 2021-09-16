@@ -6,9 +6,9 @@
 #
 default: &default
   adapter: postgresql
-  username: ubuntu
-  password: 12345
-  pool: 5000
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  pool: <%= ENV['RAILS_MAX_THREADS'] || 5 %>
   timeout: 5000
   #port: 5433
   

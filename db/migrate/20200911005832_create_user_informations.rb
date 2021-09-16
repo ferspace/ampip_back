@@ -10,7 +10,7 @@ class CreateUserInformations < ActiveRecord::Migration[5.2]
       t.string :charge
       t.datetime :date_of_birth
       t.string :phone_office
-      t.integer :cel
+      t.string :cel
       t.boolean :status
       t.string :municipality
       t.string :colony

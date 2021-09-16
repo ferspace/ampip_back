@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_173628) do
   create_table "status_disponibilities", force: :cascade do |t|
     t.boolean "status_property"
     t.decimal "average_price"
-    t.integer "use"
+    t.string "use"
     t.bigint "property_informations_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -193,7 +193,7 @@ ActiveRecord::Schema.define(version: 2021_09_07_173628) do
     t.string "charge"
     t.datetime "date_of_birth"
     t.string "phone_office"
-    t.integer "cel"
+    t.string "cel"
     t.boolean "status"
     t.string "municipality"
     t.string "colony"
