@@ -29,6 +29,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
     def update
         updatePropertyInformation = PropertyInformations.find(params[:id])
         if updatePropertyInformation.update(permit_params_update)
+            
             render json:{"message":"guardado"}
         else
             render json:{"message":updatePropertyInformation.errors.full_messages}

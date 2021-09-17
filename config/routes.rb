@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         post "sign_in", to: "sessions#create"
         get "logout", to: "sessions#destroy"
       end
+      resources :documents
     end
   end
 end
