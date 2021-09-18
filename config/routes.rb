@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :rescue_user_information
       resources :update_user 
       put "update_publish", to: "property_informations#update_publish"
+      get "get_update_publish", to: "property_informations#get_update_publish"
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         put "update_user", to: "registrations#update"

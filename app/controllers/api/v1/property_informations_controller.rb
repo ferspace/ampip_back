@@ -2,17 +2,21 @@ class Api::V1::PropertyInformationsController < ApplicationController
     #before_action :session_user
 
     def index
-        propertyInformations = PropertyInformations.where(status: "publicado")
+        propertyInformations = PropertyInformations.where(status: 2)
         render json: propertyInformations, each_serializer: Api::V1::PropertyInformationSerializer
     end
 
     def update_publish
         updatePropertyInformation = PropertyInformations.find(params[:id])
         if updatePropertyInformation.update(status: params[:status])
-            render json:{"message":"publicado"}
+            render json:{"message":"status modificado"}
         else
             render json:{"message":updatePropertyInformation.errors.full_messages}
         end
+    end
+
+    def get_update_publish
+        debugger
     end
 
     def show
