@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       resources :documents
       resources :upload_image
       resources :get_property
+      resources :search_image
     end
   end
 end
