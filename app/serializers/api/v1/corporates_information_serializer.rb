@@ -8,7 +8,9 @@ class Api::V1::CorporatesInformationSerializer < Api::V1::ApplicationSerializer
                 :social_media_web,
                 :corporate_id,
                 :created_at,
-                :updated_at
+                :updated_at,
+                :image
+
             
     has_many :corporate
                 
