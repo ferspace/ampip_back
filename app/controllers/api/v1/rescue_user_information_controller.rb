@@ -1,7 +1,8 @@
 class Api::V1::RescueUserInformationController < ApplicationController
 
     def show
-        dataUser = UserInformation.joins(:user).where(user_informations: {user_id:params[:id]})
+        dataUser =  UserInformation.joins(:user).where(user_informations: {user_id:params[:id]})
+       
         if dataUser[0] != nil
             corporate = Corporate.where(id: dataUser[0].id)
             users = User.where(id: dataUser[0].user_id)
