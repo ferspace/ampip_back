@@ -15,10 +15,6 @@ class Api::V1::PropertyInformationsController < ApplicationController
         end
     end
 
-    def get_update_publish
-        debugger
-    end
-
     def show
         propertyInformation_info = PropertyInformations.where(property_id:params[:id])
         if propertyInformation_info.present?

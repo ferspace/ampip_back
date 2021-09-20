@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get "logout", to: "sessions#destroy"
       end
       resources :documents
+      resources :upload_image
+      resources :get_property
     end
   end
 end
