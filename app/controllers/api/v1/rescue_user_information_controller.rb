@@ -3,7 +3,7 @@ class Api::V1::RescueUserInformationController < ApplicationController
     def show
         dataUser =  UserInformation.joins(:user).where(user_informations: {id:params[:id]})
         if dataUser[0] != nil
-            corporate = Corporate.where(id: dataUser[0].id)
+            corporate = Corporate.where(id: dataUser[0].corporate_id)
             users = User.where(id: dataUser[0].user_id)
             if corporate[0] != nil
                 render json: {"user": dataUser[0],"informacion": users.first, "corporate": corporate[0]}
