@@ -24,9 +24,9 @@ module Permissions
             else
                 return 0
             end  
-        end
+        end #buscamos el nombre del rol y retorna su id
         
-        def rescue_user_role_permission(id)
+        def rescue_user_role_permission(id) #como parametro recibe el id del rol
             permission = []
             userRolePermision = UserRolPermission.where(user_rol_id:id)
             for i in userRolePermision
@@ -35,7 +35,7 @@ module Permissions
                 permission.append(permissionWhitName[0])
             end 
             return permission
-        end
+        end #retorna como parametro los permisos
 
 
         #obtiene la informacion del usuario
