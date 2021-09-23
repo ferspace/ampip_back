@@ -2,7 +2,8 @@ module Permissions
     class RescuePermission
         
         def initialize(user_id)
-            @user_id = user_id             
+            usuarioInfo = UserInformation.where(user_id:user_id)
+            @user_id = usuarioInfo[0].user_rols_id           
         end
         
 

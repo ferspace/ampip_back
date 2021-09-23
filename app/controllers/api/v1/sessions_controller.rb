@@ -7,7 +7,7 @@ class Api::V1::SessionsController < ApplicationController
     if @user.valid_password?(sign_in_params[:password])
       sign_in "user", @user
       rules = Permissions::RescuePermission.new(@user[:id]).rescues
-      render json: {
+      render json: { 
         messages: "Signed In Successfully",
         is_success: true,
         is_client: @user.user_type,
