@@ -20,7 +20,7 @@ class Api::V1::UpdateUserController < ApplicationController
           render json: { messages: "update Successfully", is_success: true, is_client: user.user_type, data: {user: user}
         }, status: :ok
         else
-          render json: { messages: "update Failded", is_success: false, data: {}
+          render json: { messages: information.errors.full_messages, is_success: false, data: {}
           }, status: :unprocessable_entity
         end
       end
