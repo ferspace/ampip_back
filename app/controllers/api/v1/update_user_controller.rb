@@ -26,7 +26,7 @@ class Api::V1::UpdateUserController < ApplicationController
       end
   
       def user_params
-        params.require(:user).permit(:password, :password_confirmation, :user_type)
+        params.require(:user).permit(:email, :password, :password_confirmation, :user_type)
       end
 
       
