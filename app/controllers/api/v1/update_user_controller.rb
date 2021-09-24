@@ -15,7 +15,7 @@ class Api::V1::UpdateUserController < ApplicationController
       private
   
       def update_request(user)
-        information = user.user_information
+        information = UserInformation.where(user_id:user.id)
         if information.update(user_information)
           render json: { messages: "update Successfully", is_success: true, is_client: user.user_type, data: {user: user}
         }, status: :ok
@@ -26,7 +26,7 @@ class Api::V1::UpdateUserController < ApplicationController
       end
   
       def user_params
-        params.require(:user).permit(:email, :password, :password_confirmation, :user_type)
+        params.require(:user).permit(:password, :password_confirmation, :user_type)
       end
 
       
