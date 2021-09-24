@@ -5,7 +5,7 @@ class Api::V1::UpdateUserController < ApplicationController
           update_request(user)
         else
           render json: {
-            messages: "update Failded",
+            messages: user.errors.full_messages,
             is_success: false,
             data: {}
           }, status: :unprocessable_entity
