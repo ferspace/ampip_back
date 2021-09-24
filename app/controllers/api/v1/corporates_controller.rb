@@ -31,6 +31,17 @@ class Api::V1::CorporatesController < ApplicationController
         end
     end
 
+    
+    def seeOut
+        id = params[:id]
+        deleted = Corporate.where(id:id)
+        if deleted.update(status:false)
+            render json: {"message":"eliminado"}
+        else
+            render json: {"message":deleted.errors.full_messages}
+        end
+    end
+
     private
 
         def session_user

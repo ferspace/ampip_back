@@ -28,10 +28,10 @@ module Corporativo
         def rescue_id
             userInformation = UserInformation.find_by_user_id(@user[:id])
             if @user[:user_type] == "admin_ampip" || @user[:user_type] == "user_ampip"
-                return  corporates = Corporate.where(corporate_type: @params[:type])
+                return  corporates = Corporate.where(corporate_type: @params[:type], status:true)
             else
                 if userInformation[:corporate_id]
-                    return corporates = Corporate.where(corporate_type: @params[:type])
+                    return corporates = Corporate.where(corporate_type: @params[:type], status:true)
                 end
             end
         end

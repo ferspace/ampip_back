@@ -29,6 +29,16 @@ class Api::V1::PropietiesController < ApplicationController
         end
     end
 
+
+    def seeOut
+        id = params[:id]
+        deleted = PropertyInformations.where(property_id:id)
+        if deleted.update(status:2)
+            render json: {"message":"eliminado"}
+        else
+            render json: {"message":deleted.errors.full_messages}
+        end
+    end
     private
 
         def session_user

@@ -40,12 +40,12 @@ module Dashboard
         #rescata los o el desarrollador dependiendo de el requerimiento donde type  (0 => patrocinadores o 1 => desarrolladores)
         def rescue_corporate(id, type = nil)
             if id == 0
-                return Corporate.where(corporate_type: type)
+                return Corporate.where(corporate_type: type, status:true)
             else
                 if id == "Sin datos"
                     return "Sin Desarrollador asignado"
                 else 
-                    return Corporate.where(id: id.corporate_id)
+                    return Corporate.where(id: id.corporate_id, status:true)
                 end    
             end
         end

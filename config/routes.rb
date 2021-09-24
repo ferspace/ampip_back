@@ -35,6 +35,10 @@ Rails.application.routes.draw do
       resources :get_property
       resources :search_image
       resources :corporate_image
+      #URl para eliminar 
+
+      post "delete_property", to: "propieties#seeOut"
+      post "delete_corporate", to: "corporates#seeOut"
     end
   end
 end
