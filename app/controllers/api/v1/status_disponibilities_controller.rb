@@ -32,10 +32,6 @@ class Api::V1::StatusDisponibilitiesController < ApplicationController
         end
     end
 
-    def destroy
-
-    end
-
     private
 
     def permit_params

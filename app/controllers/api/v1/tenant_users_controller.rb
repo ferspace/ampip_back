@@ -44,7 +44,9 @@ class Api::V1::TenantUsersController < ApplicationController
     end
 
     def destroy
-
+        if TenantUser.delete(params[:id])
+            render json:{"message":"Eliminaod"}
+        end
     end 
 
     private 

@@ -32,6 +32,12 @@ class Api::V1::RegistrationsController < ApplicationController
       end
     end
 
+    def dropingUsers 
+        idUserInfo = UserInformation.where(user_id:params[:id])
+        debugger
+        UID = UserInformation.destroy()
+    end
+
     private
 
     def update_request(user)

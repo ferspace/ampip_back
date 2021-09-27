@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       resources :update
       resources :rescue_user_information
       resources :update_user 
+      resources :status_disponibilities_extra
+      resources :user_extra
       put "update_publish", to: "property_informations#update_publish"
       get "get_update_publish", to: "property_informations#get_update_publish"
       devise_scope :user do
@@ -35,8 +37,7 @@ Rails.application.routes.draw do
       resources :get_property
       resources :search_image
       resources :corporate_image
-      #URl para eliminar 
-
+      #URl para eliminar
       post "delete_property", to: "propieties#seeOut"
       post "delete_corporate", to: "corporates#seeOut"
     end
