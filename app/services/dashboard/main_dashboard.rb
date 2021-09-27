@@ -71,20 +71,20 @@ module Dashboard
             if @user = UserInformation.where(user_id:@params[:id])[0]
                 if @params[:user_type] == "admin_ampip" || @params[:user_type] == "user_ampip"
                     return {
-                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{status:1, tipo:0}),
-                        "naves": PropertyInformations.joins(:property).where(property:{tipo:1}, property_informations:{status:1}),
-                        "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2}, property_informations:{status:1}),
-                        "nav": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:1, status:1}),
-                        "ter": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:2, status:1})
+                        "parques": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{status:1, tipo:0}).or(PropertyInformations.where(property:{tipo:0}, property_informations:{status:2, tipo:0})),
+                        "naves": PropertyInformations.joins(:property).where(property:{tipo:1}, property_informations:{status:1}).or(PropertyInformations.where(property:{tipo:1}, property_informations:{status:2})),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{tipo:2}, property_informations:{status:1}).or(PropertyInformations.where(property:{tipo:2}, property_informations:{status:2})),
+                        "nav": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:1, status:1}).or(PropertyInformations.where(property:{tipo:0}, property_informations:{tipo:1, status:1})),
+                        "ter": PropertyInformations.joins(:property).where(property:{tipo:0}, property_informations:{tipo:2, status:1}).or(PropertyInformations.where(property:{tipo:0}, property_informations:{tipo:2, status:1}))
                     }
                 end
             else
                 return {
-                        "parques": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id],  tipo:0}, property_informations:{status:1}),
-                        "naves": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:1}, property_informations:{status:1}),
-                        "terrenos": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:2}, property_informations:{status:1}),
-                        "nav": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:1, status:1}),
-                        "ter": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:2, status:1})
+                        "parques": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id],  tipo:0}, property_informations:{status:1}).or(PropertyInformations.where(property:{corporate_id:@user[:corporate_id],  tipo:0}, property_informations:{status:2})),
+                        "naves": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:1}, property_informations:{status:1}).or(PropertyInformations.where(property:{corporate_id:@user[:corporate_id], tipo:1}, property_informations:{status:2})),
+                        "terrenos": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:2}, property_informations:{status:1}).or(PropertyInformations.where(property:{corporate_id:@user[:corporate_id], tipo:2}, property_informations:{status:2})),
+                        "nav": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:1, status:1}).or(PropertyInformations.where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:1, status:2})),
+                        "ter": PropertyInformations.joins(:property).where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:2, status:1}).or(PropertyInformations.where(property:{corporate_id:@user[:corporate_id], tipo:0}, property_informations:{tipo:2, status:2}))
                     }
             end
         end

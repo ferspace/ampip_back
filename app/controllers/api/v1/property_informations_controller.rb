@@ -7,7 +7,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
     end
 
     def update_publish
-        updatePropertyInformation = PropertyInformations.find(params[:id])
+        updatePropertyInformation = PropertyInformations.where(id:params[:id][:id])
         if updatePropertyInformation.update(status: params[:status])
             render json:{"message":"status modificado"}
         else
