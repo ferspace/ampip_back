@@ -1,6 +1,8 @@
 class Api::V1::UpdateUserController < ApplicationController
     def update
-        user = User.find(params[:id])
+        userId = UserInformation.where(id:params[:id])
+        ids = userId[0].user_id
+        user = User.where(id:ids)
         if user.update(user_params)
           update_request(user)
         else
