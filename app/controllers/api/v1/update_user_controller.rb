@@ -18,7 +18,7 @@ class Api::V1::UpdateUserController < ApplicationController
   
       def update_request(user, id)
         information = UserInformation.where(id:id)
-        render :json {messages: information}
+        render json: {messages: information}
       end
   
       def user_params
