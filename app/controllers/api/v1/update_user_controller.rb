@@ -18,7 +18,11 @@ class Api::V1::UpdateUserController < ApplicationController
   
       def update_request(user, id)
         information = UserInformation.where(id:id)
-        render json: {messages: information}
+        if information.update(user_information)
+          render json: { messages: "okey"}, status: :ok
+        else
+          render json: { messages: information.errors.full_messages}, status: :unprocessable_entity
+        end
       end
   
       def user_params
