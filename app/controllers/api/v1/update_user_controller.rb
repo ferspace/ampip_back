@@ -4,7 +4,7 @@ class Api::V1::UpdateUserController < ApplicationController
         ids = userId[0].user_id
         user = User.where(id:ids)
         if user.update(user_params)
-          render json: {messages: "Listo"}
+          update_request(user, params[:id])
         else
           render json: {
             messages: user.errors.full_messages,
@@ -16,8 +16,8 @@ class Api::V1::UpdateUserController < ApplicationController
   
       private
   
-      def update_request(user)
-        information = UserInformation.where(user_id:user.id)
+      def update_request(user, id)
+        information = UserInformation.where(id:id)
         if information.update(user_information)
           render json: { messages: "update Successfully", is_success: true, is_client: user.user_type, data: {user: user}
         }, status: :ok
