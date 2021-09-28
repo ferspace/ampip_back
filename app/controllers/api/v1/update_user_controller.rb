@@ -18,13 +18,7 @@ class Api::V1::UpdateUserController < ApplicationController
   
       def update_request(user, id)
         information = UserInformation.where(id:id)
-        if information.update(user_information)
-          render json: { messages: "update Successfully", is_success: true, is_client: user.user_type, data: {user: user}
-        }, status: :ok
-        else
-          render json: { messages: information.errors.full_messages, is_success: false, data: {}
-          }, status: :unprocessable_entity
-        end
+        render :json {messages: information}
       end
   
       def user_params
