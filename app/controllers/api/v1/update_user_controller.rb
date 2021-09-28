@@ -4,7 +4,7 @@ class Api::V1::UpdateUserController < ApplicationController
         ids = userId[0].user_id
         user = User.where(id:ids)
         if user.update(user_params)
-          update_request(user)
+          render json: {messages: "Listo"}
         else
           render json: {
             messages: user.errors.full_messages,
