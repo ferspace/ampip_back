@@ -7,6 +7,7 @@ module Dashboard
         def call
             if @params != 0 && @params != nil
                 type = @params[:user_type]
+                
                 user_information = rescue_user_information(@params[:id])[0]
                 if user_information != 0
                     user_permissions = Permissions::RescuePermission.new(user_information[:user_rols_id]).call

@@ -14,6 +14,7 @@ class Api::V1::TenantUsersController < ApplicationController
         getProps = Property.find(params[:tenant_user][:id_propiedad])
         if getProps.present?
             newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps.id ))
+            debugger
             if newTenantUser.save
                 render json:{"message":newTenantUser}
             else
@@ -56,7 +57,7 @@ class Api::V1::TenantUsersController < ApplicationController
     end
 
     def permit_params
-        params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie, :id_propiedad, sector)
+        params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie, :id_propiedad, :sector)
     end
 
     def rescue_tenant_user 
