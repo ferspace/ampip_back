@@ -56,7 +56,7 @@ class Api::V1::TenantUsersController < ApplicationController
     end
 
     def permit_params
-        params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie, :id_propiedad)
+        params.require(:tenant_user).permit(:property_id, :name_bussines, :country, :product_badge, :ID_SCIAN, :ID_DENUE, :antiquity, :superficie, :id_propiedad, sector)
     end
 
     def rescue_tenant_user 
