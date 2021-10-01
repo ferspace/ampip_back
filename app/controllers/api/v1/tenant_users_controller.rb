@@ -11,9 +11,9 @@ class Api::V1::TenantUsersController < ApplicationController
     end 
 
     def create
-        getProps = Property.find(params[:tenant_user][:id_propiedad])
+        getProps = PropertyInformations.find(params[:tenant_user][:id_propiedad])
         if getProps.present?
-            newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps.id ))
+            newTenantUser = TenantUser.new(permit_params.merge(property_id: getProps.property_id ))
             if newTenantUser.save
                 render json:{"message":newTenantUser}
             else
