@@ -33,8 +33,9 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :num_ext,
                 :phone,
                 :lada,
-                :code
-                :image
+                :code,
+                :image,
+                :type_use
 
     has_many :property
     has_many :status_disponibilities
