@@ -11,6 +11,7 @@ class Api::V1::TenantUserSerializer < Api::V1::ApplicationSerializer
                :created_at,
                :updated_at,
                :id_propiedad,
-               :sector
+               :sector,
+               :type_use
     
 end
