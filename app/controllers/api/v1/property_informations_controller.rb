@@ -28,6 +28,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
         newPropertyInformation = PropertyInformations.new permit_params
         if newPropertyInformation.save
             idProperty = newPropertyInformation[:id]
+            #sube imagenes a bilda
             newStatus = createStatus(idProperty)#creaa el status disponible por defecto en falso
             render json:{"message": newStatus}
         else
