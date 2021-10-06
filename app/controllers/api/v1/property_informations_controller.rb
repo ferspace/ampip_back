@@ -25,7 +25,9 @@ class Api::V1::PropertyInformationsController < ApplicationController
     end
 
     def create
-        newPropertyInformation = PropertyInformations.new permit_params
+        
+        uploadResource = Upload::Image.new(params[:property_information][:image]).call;
+        newPropertyInformation = PropertyInformations.new(permit_params.merge(image: uploadResource))
         if newPropertyInformation.save
             idProperty = newPropertyInformation[:id]
             newStatus = createStatus(idProperty)#creaa el status disponible por defecto en falso
@@ -57,7 +59,7 @@ class Api::V1::PropertyInformationsController < ApplicationController
         end
 
         def permit_params
-            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :image, :type_use)
+            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :type_use)
         end
 
         def permit_params_update
