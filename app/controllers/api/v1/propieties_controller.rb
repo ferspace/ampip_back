@@ -33,7 +33,7 @@ class Api::V1::PropietiesController < ApplicationController
     def seeOut
         id = params[:id]
         deleted = PropertyInformations.where(id:id)
-        if deleted.update(status:0)
+        if deleted.update(status: 10)
             render json: {"message":"eliminado"}
         else
             render json: {"message":deleted.errors.full_messages}
