@@ -9,7 +9,12 @@ class Api::V1::PropertyInformationsController < ApplicationController
     def update_publish
         updatePropertyInformation = PropertyInformations.where(id:params[:id][:id])
         if updatePropertyInformation.update(status: params[:status])
-            render json:{"message":"status modificado"}
+            response = Bilda::Content.new(params[:id][:id]).defineStatus
+            if response
+                render json:{"message":"status modificado"}
+            else
+                render json:{"message":"status modificado no publicado"}
+            end
         else
             render json:{"message":updatePropertyInformation.errors.full_messages}
         end

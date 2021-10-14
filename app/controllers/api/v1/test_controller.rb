@@ -5,6 +5,11 @@ class Api::V1::TestController < ApplicationController
         render json:{"response":dataUser}
     end
 
+    def create 
+        response = Bilda::Content.new(1).defineStatus
+        render json:{"response":response}
+    end
+
     private 
 
     def rescue_params
