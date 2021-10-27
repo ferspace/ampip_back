@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_153712) do
+ActiveRecord::Schema.define(version: 2021_10_27_134441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_153712) do
     t.integer "ID_DENUE"
     t.integer "antiquity"
     t.integer "superficie"
-    t.integer "id_propiedad"
+    t.string "id_propiedad"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "property_id", null: false
