@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       #URl para eliminar
       post "delete_property", to: "propieties#seeOut"
       post "delete_corporate", to: "corporates#seeOut"
+      post "tenant_industrial", to: "tenant_users#index_post"
       resources :uploads
       
     end

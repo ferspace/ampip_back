@@ -43,6 +43,11 @@ class Api::V1::TenantUsersController < ApplicationController
         end
     end
 
+    def index_post
+        tenant = TenantUser.where(property_id: params[:id])
+        render json: tenant
+    end
+
     def destroy
         if TenantUser.delete(params[:id])
             render json:{"message":"Eliminaod"}
