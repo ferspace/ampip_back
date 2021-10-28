@@ -42,6 +42,7 @@ Rails.application.routes.draw do
       post "delete_property", to: "propieties#seeOut"
       post "delete_corporate", to: "corporates#seeOut"
       post "tenant_industrial", to: "tenant_users#index_post"
+      post "get_user_by_corporate", to: "user_extra#get_user_by_corporate"
       resources :uploads
       
     end
