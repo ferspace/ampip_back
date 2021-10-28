@@ -5,8 +5,8 @@ class Api::V1::ContactSerializer < Api::V1::ApplicationSerializer
                 :website,
                 :created_at,
                 :updated_at,
-                :property_information
+                :property_informations
                 
-    has_many :property_information
+    has_many :property_informations
                 
 end
