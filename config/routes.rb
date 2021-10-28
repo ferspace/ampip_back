@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       resources :user_extra
       put "update_publish", to: "property_informations#update_publish"
       get "get_update_publish", to: "property_informations#get_update_publish"
+      get "IndustrialBuildingOnly", to: "property_informations#IndustrilBuildingOnly"
       devise_scope :user do
         post "sign_up", to: "registrations#create"
         put "update_user", to: "registrations#update"
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
       post "delete_property", to: "propieties#seeOut"
       post "delete_corporate", to: "corporates#seeOut"
       resources :uploads
+      
     end
   end
 end

@@ -1,5 +1,5 @@
 class Api::V1::PropertyInformationsController < ApplicationController
-    #before_action :session_user
+    before_action :session_user
 
     def index
         propertyInformations = PropertyInformations.where(status: 2)
@@ -52,6 +52,22 @@ class Api::V1::PropertyInformationsController < ApplicationController
             render json:{"message":updatePropertyInformation.errors.full_messages}
         end
     end
+
+    def IndustrilBuildingOnly
+        if @current_user[:user_type] == "admin_ampip" || @current_user[:user_type] == "user_amip"
+            properties = PropertyInformations.joins(:property).where(property_informations: {status: 1, tipo: 3})
+            render json: properties, each_serializer: Api::V1::PropertyInformationSerializer
+        else
+            userInfo = UserInformation.where(user_id: @current_user[:id])
+            if userInfo.present?
+                corporate = userInfo[0][:corporate_id]
+                properties = PropertyInformations.joins(:property).where({property_informations: {status: 1, tipo: 3 }, property: {corporate_id: corporate}}).or(PropertyInformations.joins(:property).where({property_informations: {status: 1},property: {corporate_id: corporate, tipo: 3}}))
+                debugger
+                render json: properties, each_serializer: Api::V1::PropertyInformationSerializer
+            end
+        end
+    end
+
 
     private
 
