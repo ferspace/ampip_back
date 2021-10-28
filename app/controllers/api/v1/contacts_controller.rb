@@ -22,6 +22,7 @@ class Api::V1::ContactsController < ApplicationController
     def update
         updateContact = ContactInformation.find(params[:id])
         if updateContact.update(permit_params)
+            
             render json:{"message":"guardado"}
         else
             render json:{"message":updateContact.errors.full_messages}
@@ -35,7 +36,7 @@ class Api::V1::ContactsController < ApplicationController
     private
 
     def permit_params
-         params.require(:contact).permit(:property_information_id, :name, :phone_number, :website)
+         params.require(:contact).permit(:property_informations_id, :name, :phone_number, :website)
     end
 
 end

@@ -35,7 +35,8 @@ class Api::V1::PropertyInformationSerializer < Api::V1::ApplicationSerializer
                 :lada,
                 :code,
                 :image,
-                :type_use
+                :type_use,
+                :confidencial
 
     has_many :property
     has_many :status_disponibilities

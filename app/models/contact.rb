@@ -1,3 +1,3 @@
 class Contact < ApplicationRecord
-  belongs_to :property_information, dependent: :destroy
+  belongs_to :property_informations, dependent: :destroy
 end

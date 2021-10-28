@@ -35,7 +35,9 @@ class Api::V1::PropertyInformationsController < ApplicationController
             idProperty = newPropertyInformation[:id]
             #sube imagenes a bilda
             newStatus = createStatus(idProperty)#creaa el status disponible por defecto en falso
-            render json:{"message": newStatus}
+            if newStatus == true
+                render json:{"message": idProperty}
+            end
         else
             render json:{"message":newPropertyInformation.errors.full_messages}
         end
@@ -63,20 +65,20 @@ class Api::V1::PropertyInformationsController < ApplicationController
         end
 
         def permit_params
-            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :image, :type_use)
+            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :image, :type_use, :confidencial)
         end
 
         def permit_params_update
-            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :image, :type_use)
+            params.require(:property_information).permit(:property_id, :name, :tipo, :superficie, :address, :english_name, :park_property, :region, :market, :industry, :suprficie_total, :superficie_urbanizada, :superficie_disponible, :inicio_de_operaciones, :number_employe, :practices_recognition, :infrastructure, :navy_number, :message, :postal_code, :colony, :municipality, :state, :status, :unity, :lat, :lng, :num_int, :num_ext, :phone, :lada, :code, :image, :type_use, :confidencial)
         end
 
         #crear registro en la tabla de disponibilidad
         def createStatus(id)
             newStatus = StatusDisponibility.new(status_property:false, property_informations_id: id, average_price: nil, use: "N/A")
             if newStatus.save
-                return "Guardado"
+                return true
             else
-                return "error"
+                return false
             end
         end
 

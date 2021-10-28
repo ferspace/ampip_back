@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_134441) do
+ActiveRecord::Schema.define(version: 2021_10_28_144003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_134441) do
     t.string "num_ext"
     t.string "type_use"
     t.string "id_bilda"
+    t.boolean "confidencial", default: false
     t.index ["property_id"], name: "index_property_informations_on_property_id"
   end
 
