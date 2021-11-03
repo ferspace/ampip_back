@@ -6,7 +6,7 @@ class Api::V1::ContactsController < ApplicationController
     end
 
     def show
-        contacts_info = Contact.where(property_informations_id:params[:id])
+        contacts_info = Contact.where(id:params[:id])
         render json: contacts_info, each_serializer: Api::V1::ContactSerializer
     end
 
